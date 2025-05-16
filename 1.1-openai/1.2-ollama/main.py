@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 
@@ -16,18 +17,18 @@ os.environ["LANGCHAIN_PROJECT"]=os.getenv("LANGCHAIN_PROJECT")
 ## Prompt Template
 prompt=ChatPromptTemplate.from_messages(
     [
-        ("system","You are a AI Expert. Please respond to the question asked"),
+        ("system","You are the AI and Financial Trading Expert, answer the question you have been asked."),
         ("user","Question:{question}")
     ]
 )
 
 ## streamlit framework
-st.title("Langchain Demo With Gemma Model")
+st.title("Langchain ChatPrompt With llama3 Model")
 input_text=st.text_input("What question you have in mind?")
 
 
 ## Ollama Llama2 model
-llm=Ollama(model="gemma:2b")
+llm=Ollama(model="llama3")
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
 
